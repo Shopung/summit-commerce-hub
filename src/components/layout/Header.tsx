@@ -44,29 +44,41 @@ const Header = () => {
 
         {/* Navigation - Desktop */}
         <nav className="hidden lg:flex items-center gap-6">
-          <Button variant="ghost" size="sm" className="gap-2">
-            <Package className="h-4 w-4" />
-            Catalog
+          <Button variant="ghost" size="sm" className="gap-2" asChild>
+            <a href="/catalog">
+              <Package className="h-4 w-4" />
+              Catalog
+            </a>
           </Button>
-          <Button variant="ghost" size="sm" className="gap-2">
-            <BarChart3 className="h-4 w-4" />
-            Inventory
+          <Button variant="ghost" size="sm" className="gap-2" asChild>
+            <a href="/inventory">
+              <BarChart3 className="h-4 w-4" />
+              Inventory
+            </a>
           </Button>
-          <Button variant="ghost" size="sm" className="gap-2">
-            <ShoppingCart className="h-4 w-4" />
-            Orders
+          <Button variant="ghost" size="sm" className="gap-2" asChild>
+            <a href="/orders">
+              <ShoppingCart className="h-4 w-4" />
+              Orders
+            </a>
           </Button>
-          <Button variant="ghost" size="sm" className="gap-2">
-            <Zap className="h-4 w-4" />
-            AI Tools
+          <Button variant="ghost" size="sm" className="gap-2" asChild>
+            <a href="/ai-tools">
+              <Zap className="h-4 w-4" />
+              AI Tools
+            </a>
           </Button>
-          <Button variant="ghost" size="sm" className="gap-2">
-            <DollarSign className="h-4 w-4" />
-            Pricing
+          <Button variant="ghost" size="sm" className="gap-2" asChild>
+            <a href="/pricing">
+              <DollarSign className="h-4 w-4" />
+              Pricing
+            </a>
           </Button>
-          <Button variant="ghost" size="sm" className="gap-2">
-            <TrendingUp className="h-4 w-4" />
-            Analytics
+          <Button variant="ghost" size="sm" className="gap-2" asChild>
+            <a href="/analytics">
+              <TrendingUp className="h-4 w-4" />
+              Analytics
+            </a>
           </Button>
         </nav>
 
@@ -114,41 +126,41 @@ const Header = () => {
       {isMenuOpen && (
         <div className="lg:hidden border-t border-border bg-background">
           <nav className="container mx-auto px-4 py-4 space-y-2">
-            <Button variant="ghost" className="w-full justify-start gap-2">
-              <Package className="h-4 w-4" />
-              Catalog & Listings
+            <Button variant="ghost" className="w-full justify-start gap-2" asChild>
+              <a href="/catalog">
+                <Package className="h-4 w-4" />
+                Catalog & Listings
+              </a>
             </Button>
-            <Button variant="ghost" className="w-full justify-start gap-2">
-              <BarChart3 className="h-4 w-4" />
-              Inventory & Stock
+            <Button variant="ghost" className="w-full justify-start gap-2" asChild>
+              <a href="/inventory">
+                <BarChart3 className="h-4 w-4" />
+                Inventory & Stock
+              </a>
             </Button>
-            <Button variant="ghost" className="w-full justify-start gap-2">
-              <ShoppingCart className="h-4 w-4" />
-              Orders & Fulfillment
+            <Button variant="ghost" className="w-full justify-start gap-2" asChild>
+              <a href="/orders">
+                <ShoppingCart className="h-4 w-4" />
+                Orders & Fulfillment
+              </a>
             </Button>
-            <Button variant="ghost" className="w-full justify-start gap-2">
-              <Zap className="h-4 w-4" />
-              AI-Assisted Tools
+            <Button variant="ghost" className="w-full justify-start gap-2" asChild>
+              <a href="/ai-tools">
+                <Zap className="h-4 w-4" />
+                AI-Assisted Tools
+              </a>
             </Button>
-            <Button variant="ghost" className="w-full justify-start gap-2">
-              <DollarSign className="h-4 w-4" />
-              Pricing & Revenue
+            <Button variant="ghost" className="w-full justify-start gap-2" asChild>
+              <a href="/pricing">
+                <DollarSign className="h-4 w-4" />
+                Pricing & Revenue
+              </a>
             </Button>
-            <Button variant="ghost" className="w-full justify-start gap-2">
-              <TrendingUp className="h-4 w-4" />
-              Analytics & Reporting
-            </Button>
-            <Button variant="ghost" className="w-full justify-start gap-2">
-              <Users className="h-4 w-4" />
-              Marketing & Growth
-            </Button>
-            <Button variant="ghost" className="w-full justify-start gap-2">
-              <Globe className="h-4 w-4" />
-              Integrations
-            </Button>
-            <Button variant="ghost" className="w-full justify-start gap-2">
-              <Shield className="h-4 w-4" />
-              Compliance & Security
+            <Button variant="ghost" className="w-full justify-start gap-2" asChild>
+              <a href="/analytics">
+                <TrendingUp className="h-4 w-4" />
+                Analytics & Reporting
+              </a>
             </Button>
           </nav>
         </div>

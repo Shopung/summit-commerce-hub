@@ -20,109 +20,77 @@ import {
   Rocket
 } from "lucide-react";
 
-const features = [
+const tiers = [
   {
-    icon: Package,
-    title: "Catalog & Listings",
-    description: "Unified product catalog with bulk operations, AI-assisted mapping, and marketplace-specific overrides.",
-    tier: "free",
-    features: ["Basic catalog", "Manual listings", "5 products"],
-    premium: ["Bulk operations", "AI mapping", "Unlimited products", "Templates", "Policy checker"]
+    name: "Free",
+    price: "$0",
+    period: "forever",
+    description: "Perfect for getting started with multi-platform selling",
+    icon: UserCheck,
+    color: "bg-muted text-muted-foreground",
+    gradient: "bg-gradient-subtle",
+    features: [
+      "Basic product catalog (up to 5 products)",
+      "Manual listing creation",
+      "Basic inventory tracking",
+      "Simple order management",
+      "Basic analytics & reports",
+      "3 marketplace integrations",
+      "Email support",
+      "Basic pricing rules"
+    ],
+    highlight: false
   },
   {
-    icon: BarChart3,
-    title: "Inventory & Stock",
-    description: "Real-time inventory sync across all channels with multi-warehouse support and smart thresholds.",
-    tier: "pro",
-    features: ["Real-time sync", "Multi-warehouse", "Safety stock", "Oversell prevention"],
-    premium: ["Advanced routing", "Aging reports", "Predictive restocking"]
+    name: "Pro",
+    price: "$49",
+    period: "per month",
+    description: "Scale your business with advanced automation and AI tools",
+    icon: Crown,
+    color: "bg-gradient-primary text-white",
+    gradient: "bg-gradient-primary",
+    features: [
+      "Everything in Free, plus:",
+      "Unlimited products & listings",
+      "Bulk listing operations",
+      "Real-time inventory sync across all channels",
+      "Smart order routing & fulfillment",
+      "AI-powered listing descriptions",
+      "Dynamic pricing with competitor tracking",
+      "Advanced analytics & forecasting",
+      "Unlimited marketplace integrations", 
+      "Multi-warehouse support",
+      "Branded tracking pages",
+      "Priority support"
+    ],
+    highlight: true
   },
   {
-    icon: ShoppingCart,
-    title: "Orders & Fulfillment",
-    description: "Centralized order management with smart routing, batch processing, and branded tracking.",
-    tier: "pro",
-    features: ["Order dashboard", "Basic routing", "Shipping labels"],
-    premium: ["Smart routing", "Rate shopping", "Branded tracking", "Returns automation"]
-  },
-  {
-    icon: Zap,
-    title: "AI-Assisted Tools",
-    description: "AI-powered listing generation, image optimization, translation, and intelligent alerts.",
-    tier: "enterprise",
-    features: ["Basic AI descriptions"],
-    premium: ["Advanced AI", "Image cleanup", "Auto-translate", "Smart alerts", "Attribute autofill"]
-  },
-  {
-    icon: DollarSign,
-    title: "Pricing & Revenue",
-    description: "Dynamic pricing rules, competitor matching, promotion scheduling, and margin optimization.",
-    tier: "pro",
-    features: ["Basic pricing rules", "Manual adjustments"],
-    premium: ["Dynamic pricing", "Competitor tracking", "Promotion calendar", "Margin calculator"]
-  },
-  {
-    icon: TrendingUp,
-    title: "Analytics & Reporting",
-    description: "Comprehensive performance metrics, forecasting, and data export capabilities.",
-    tier: "free",
-    features: ["Basic reports", "Revenue tracking"],
-    premium: ["Advanced analytics", "Forecasting", "Cohort analysis", "Export to BI", "Custom dashboards"]
-  },
-  {
-    icon: Users,
-    title: "Marketing & Growth",
-    description: "Retail media management, A/B testing, and social commerce integration.",
-    tier: "enterprise",
-    features: ["Basic promotions"],
-    premium: ["Ad management", "A/B testing", "Social commerce", "Advanced campaigns"]
-  },
-  {
-    icon: Globe,
-    title: "Integrations",
-    description: "Connect with 50+ marketplaces, e-commerce platforms, and business tools.",
-    tier: "free",
-    features: ["3 integrations", "Basic sync"],
-    premium: ["Unlimited integrations", "Real-time webhooks", "Custom APIs", "Advanced workflows"]
-  },
-  {
-    icon: Shield,
-    title: "Compliance & Security",
-    description: "Policy scanning, automated compliance, and enterprise-grade security features.",
-    tier: "enterprise",
-    features: ["Basic policy scan"],
-    premium: ["Advanced compliance", "Audit logs", "Role-based access", "GDPR tools", "SOC 2 compliance"]
+    name: "Enterprise",
+    price: "Custom",
+    period: "pricing",
+    description: "Complete solution for large-scale operations with dedicated support",
+    icon: Rocket,
+    color: "bg-gradient-hero text-white", 
+    gradient: "bg-gradient-hero",
+    features: [
+      "Everything in Pro, plus:",
+      "Advanced AI tools & image optimization",
+      "Multi-account management",
+      "Custom marketplace integrations",
+      "Advanced compliance & security tools",
+      "Retail media ad management",
+      "A/B testing for listings",
+      "API access & webhooks",
+      "Role-based team access",
+      "Audit logs & activity tracking",
+      "Dedicated customer success manager",
+      "Custom training & onboarding"
+    ],
+    highlight: false
   }
 ];
 
-const getTierInfo = (tier: string) => {
-  switch (tier) {
-    case "free":
-      return { 
-        label: "Free", 
-        color: "bg-muted text-muted-foreground",
-        icon: UserCheck 
-      };
-    case "pro":
-      return { 
-        label: "Pro", 
-        color: "bg-gradient-primary text-white",
-        icon: Crown 
-      };
-    case "enterprise":
-      return { 
-        label: "Enterprise", 
-        color: "bg-gradient-hero text-white",
-        icon: Rocket 
-      };
-    default:
-      return { 
-        label: "Free", 
-        color: "bg-muted text-muted-foreground",
-        icon: UserCheck 
-      };
-  }
-};
 
 const FeatureGrid = () => {
   return (
@@ -141,73 +109,70 @@ const FeatureGrid = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {features.map((feature, index) => {
-            const tierInfo = getTierInfo(feature.tier);
-            const IconComponent = feature.icon;
-            const TierIcon = tierInfo.icon;
+        <div className="grid lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+          {tiers.map((tier, index) => {
+            const IconComponent = tier.icon;
 
             return (
-              <Card key={index} className="group relative overflow-hidden bg-gradient-card border-primary/10 hover:border-primary/20 transition-all hover:shadow-lg">
-                <CardHeader className="space-y-4">
-                  <div className="flex items-start justify-between">
-                    <div className="h-12 w-12 rounded-lg bg-gradient-primary flex items-center justify-center group-hover:scale-110 transition-transform">
-                      <IconComponent className="h-6 w-6 text-white" />
-                    </div>
-                    <Badge className={`gap-1 ${tierInfo.color}`}>
-                      <TierIcon className="h-3 w-3" />
-                      {tierInfo.label}
+              <Card key={index} className={`group relative overflow-hidden border-2 transition-all hover:shadow-xl ${
+                tier.highlight 
+                  ? 'border-primary/50 shadow-lg scale-105' 
+                  : 'border-primary/10 hover:border-primary/20'
+              }`}>
+                {tier.highlight && (
+                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                    <Badge className="bg-gradient-primary text-white px-6 py-1">
+                      Most Popular
                     </Badge>
                   </div>
-                  <CardTitle className="text-xl group-hover:text-primary transition-colors">
-                    {feature.title}
-                  </CardTitle>
+                )}
+
+                <CardHeader className="text-center space-y-6 pb-8">
+                  <div className="flex flex-col items-center space-y-4">
+                    <div className={`h-16 w-16 rounded-2xl ${tier.gradient} flex items-center justify-center`}>
+                      <IconComponent className="h-8 w-8 text-white" />
+                    </div>
+                    <div>
+                      <h3 className="text-2xl font-bold">{tier.name}</h3>
+                      <div className="flex items-baseline justify-center gap-1 mt-2">
+                        <span className="text-3xl font-bold bg-gradient-primary bg-clip-text text-transparent">
+                          {tier.price}
+                        </span>
+                        <span className="text-muted-foreground">/{tier.period}</span>
+                      </div>
+                    </div>
+                  </div>
                   <p className="text-muted-foreground leading-relaxed">
-                    {feature.description}
+                    {tier.description}
                   </p>
                 </CardHeader>
 
-                <CardContent className="space-y-4">
-                  {/* Free tier features */}
-                  <div className="space-y-2">
-                    <h4 className="text-sm font-medium text-muted-foreground flex items-center gap-2">
-                      <UserCheck className="h-4 w-4" />
-                      Included Features
-                    </h4>
-                    <ul className="space-y-1">
-                      {feature.features.map((item, i) => (
-                        <li key={i} className="text-sm flex items-center gap-2">
-                          <div className="h-1 w-1 rounded-full bg-primary" />
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                <CardContent className="space-y-6">
+                  <ul className="space-y-3">
+                    {tier.features.map((feature, i) => (
+                      <li key={i} className="flex items-start gap-3">
+                        <div className="h-2 w-2 rounded-full bg-primary mt-2 flex-shrink-0" />
+                        <span className={`text-sm leading-relaxed ${
+                          feature.startsWith('Everything in') ? 'font-medium text-primary' : ''
+                        }`}>
+                          {feature}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
 
-                  {/* Premium features */}
-                  <div className="space-y-2">
-                    <h4 className="text-sm font-medium text-primary flex items-center gap-2">
-                      <Crown className="h-4 w-4" />
-                      Premium Features
-                    </h4>
-                    <ul className="space-y-1">
-                      {feature.premium.map((item, i) => (
-                        <li key={i} className="text-sm flex items-center gap-2 text-muted-foreground">
-                          <Lock className="h-3 w-3" />
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <Button variant="ghost" className="w-full justify-between group/btn mt-4">
-                    Learn More
+                  <Button 
+                    variant={tier.highlight ? "hero" : "outline"} 
+                    className="w-full gap-2 group/btn mt-6"
+                    size="lg"
+                  >
+                    {tier.name === "Enterprise" ? "Contact Sales" : "Get Started"}
                     <ArrowRight className="h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
                   </Button>
                 </CardContent>
 
                 {/* Hover effect */}
-                <div className="absolute inset-0 bg-gradient-primary opacity-0 group-hover:opacity-5 transition-opacity" />
+                <div className={`absolute inset-0 opacity-0 group-hover:opacity-5 transition-opacity ${tier.gradient}`} />
               </Card>
             );
           })}
